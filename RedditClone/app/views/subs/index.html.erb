@@ -1,0 +1,13 @@
+All the subs are here
+
+
+<% if logged_in? %>
+<%= current_user.username %>
+<form action="<%= new_session_url  %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="DELETE">
+
+  <input type="submit" name="name" value="Log out">
+</form>
+<% else  %>
+<% end %>

@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     )
     if @user
       login(@user)
-      #redirect to links
+      redirect_to subs_url
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new
