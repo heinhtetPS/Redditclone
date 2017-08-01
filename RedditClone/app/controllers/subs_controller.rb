@@ -38,7 +38,7 @@ class SubsController < ApplicationController
 
   def update
     @sub = Sub.find(params[:id])
-    if @sub.save!
+    if @sub.update(sub_params)
       redirect_to sub_url(@sub)
     else
       flash.now[:errors] = @sub.errors.full_messages

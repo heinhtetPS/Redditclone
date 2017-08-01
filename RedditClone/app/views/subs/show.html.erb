@@ -11,3 +11,15 @@ Moderator: <%= @sub.moderator.username %>
   <% end %>
 
   <%= link_to "Make a Post", new_post_url %>
+
+  <br>
+
+  <% Post.all.each do |post| %>
+    <% if post.sub_id == @sub.id %>
+      <ul>
+        <li><a href=" <%= post_url(post.id) %> "><%= post.title %></a></li>
+      </ul>
+    <% end %>
+  <% end %>
+
+  

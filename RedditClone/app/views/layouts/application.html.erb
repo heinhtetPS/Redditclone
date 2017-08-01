@@ -7,7 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <%= link_to "All subs", subs_url %>
+  <br>
   <% if logged_in? %>
     Welcome, <%= current_user.username %>
     <br>
@@ -21,6 +22,7 @@
     <a href=" <%= new_user_url  %> ">Register</a>
     <br>
   <% end %>
+
 
   <% if flash[:errors]%>
       <p><%= flash[:errors].join(", ") %></p>

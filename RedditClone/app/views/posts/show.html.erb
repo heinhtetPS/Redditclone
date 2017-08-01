@@ -1,0 +1,11 @@
+<h1><%= @post.title  %> by <%= @post.user.username  %></h1>
+
+<div class="Contentbox">
+  Content:
+  <br>
+  <%= @post.content %>
+</div>
+
+  <% if @post.user == current_user %>
+    <%= button_to "Edit Post", edit_post_url(@post.id) %>
+  <% end %>
