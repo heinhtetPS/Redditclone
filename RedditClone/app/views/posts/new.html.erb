@@ -2,7 +2,7 @@ New Post
 
 <form action="<%= posts_url %>" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="how to get sub_id from here?" value="">
+  <input type="hidden" name="post[sub_ids][]" value="">
   <label>
     Title:
     <input type="text" name="post[title]" value="">
@@ -21,7 +21,7 @@ New Post
     Post to this following sub:
     <br>
     <% Sub.all.each do |sub| %>
-      <input type="checkbox" name="post[sub_id]" value="<%= sub.id  %>"><%= sub.title %>
+      <input type="checkbox" name="post[sub_ids][]" value="<%= sub.id %>"><%= sub.title %>
     <% end %>
 
 

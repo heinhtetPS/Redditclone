@@ -6,9 +6,10 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.user == current_user
+    @post.user = current_user
+    debugger
     if @post.save!
-      redirect_to sub_url(@post.sub_id)
+      redirect_to sub_url(@post.sub_ids.first)
     else
       flash.now[:errors] = @post.errors.full_messages
       render :new
@@ -31,19 +32,25 @@ class PostsController < ApplicationController
   end
 
   def update
-
-
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      render :show
+    else
+      flash.now[:errors] = @post.errors.full_messages
+      render :edit
+    end
   end
 
-  def delete
-
-
+  def destroy
+    @post = Post.find(params[:id])
+    redirect_to sub_url(@post.sub_id)
+    @post.destroy
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :url, :content, :sub_id)
+    params.require(:post).permit(:title, :url, :content, sub_ids:[])
   end
 
 

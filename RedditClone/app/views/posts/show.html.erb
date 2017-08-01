@@ -7,5 +7,5 @@
 </div>
 
   <% if @post.user == current_user %>
-    <%= button_to "Edit Post", edit_post_url(@post.id) %>
+    <a href="<%= edit_post_url  %>">Edit Post</a>
   <% end %>
