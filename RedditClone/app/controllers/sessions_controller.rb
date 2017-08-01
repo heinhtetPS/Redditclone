@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       login(@user)
       redirect_to subs_url
     else
-      flash.now[:errors] = @user.errors.full_messages
+      flash.now[:errors] = ["Invalid Credentials, Try again."]
       render :new
     end
   end
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to session_url
+    redirect_to subs_url
   end
 
 end

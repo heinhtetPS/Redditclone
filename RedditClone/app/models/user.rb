@@ -23,7 +23,8 @@ class User < ActiveRecord::Base
     SecureRandom.urlsafe_base64(16)
   end
 
-  def self.reset_session_token!
+  #I was using SELF here and it messed up the entire auth process while throwing no errors
+  def reset_session_token!
     self.session_token = SecureRandom::urlsafe_base64(16)
     self.save!
     self.session_token
