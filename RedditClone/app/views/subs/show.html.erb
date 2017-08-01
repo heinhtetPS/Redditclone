@@ -9,3 +9,5 @@ Moderator: <%= @sub.moderator.username %>
 <% if @sub.moderator == current_user %>
     <a href="<%= edit_sub_url  %>">Edit sub</a>
   <% end %>
+
+  <%= link_to "Make a Post", new_post_url %>
